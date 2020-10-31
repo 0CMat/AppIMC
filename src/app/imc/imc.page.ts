@@ -8,14 +8,24 @@ import { ImcService } from 'src/services/ImcService';
   styleUrls: ['./imc.page.scss'],
 })
 export class ImcPage implements OnInit {
+  
+  public nome_dev:string = "Mat0C";
+    
   public imc: Imc = new Imc();
-  constructor(private _calculeImc: ImcService) { }
-
-  ngOnInit() {
+  
+  resultado:number;
+  constructor(private _calculeImc: ImcService) { 
+    this.resultado = 0;
   }
 
-  calcularIMC(){
-    //implementar o cod.
+  ngOnInit() {
+
+  }
+
+
+  public calcular(){
+    this.resultado = this._calculeImc.calcularImc(this.imc);
+    console.log(this.resultado);
   }
 
 }

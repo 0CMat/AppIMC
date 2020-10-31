@@ -8,7 +8,13 @@ import { Imc } from 'src/models/Imc';
 })
     export class ImcService implements IImcService{
 
-        calcularImc(dados: Imc): Observable<Imc> {
-            throw new Error('Method not implemented.');
+        constructor(){}
+
+        calcularImc(imc: Imc): number {
+            if(!imc.altura)  throw new Error('Falta de dados.Preencha o campo solicitado');
+            if(!imc.peso)  throw new Error('Falta de dados. Preencha o campo solicitado');
+            var resultado: number = 10000*(imc.peso/Math.pow(imc.altura,2));
+            return parseFloat(resultado.toFixed(2));
+            
         }
     }
